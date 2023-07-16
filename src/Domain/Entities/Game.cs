@@ -134,7 +134,7 @@ namespace ioanna.cardGame.Domain.Entities
 
             return player != null && player.Hand.Cards.Contains(card);
         }
-
+        
         private bool PlayerHasActivePipCards(Player player)
         {
             return player.Hand.Cards.Any(c => c.Pip == CurrentTrick.ActivePip);

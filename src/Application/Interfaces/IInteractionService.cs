@@ -14,5 +14,5 @@ public interface IInteractionService
 
     public Task DisplayInvalidCardError(string error);
     
-    public Task DisplayFinishedGameInfo(int winningTeam, int winningScore);
+    public Task DisplayFinishedGameInfo(List<(int,int)> scores);
 }

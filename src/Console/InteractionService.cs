@@ -53,10 +53,11 @@ public class InteractionService : IInteractionService
         return Task.CompletedTask;
     }
 
-    public Task DisplayFinishedGameInfo(int winnerTeam, int winnerScore)
+    public Task DisplayFinishedGameInfo(List<(int, int)> scores)
     {
         System.Console.WriteLine("Game Over");
-        System.Console.WriteLine($"Team {winnerTeam} won with score {winnerScore}");
+        System.Console.WriteLine($"Team {scores[0].Item1} has score {scores[0].Item2}");
+        System.Console.WriteLine($"Team {scores[1].Item1} has score {scores[1].Item2}");
 
         return Task.CompletedTask;
     }

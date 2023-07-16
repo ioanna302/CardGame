@@ -57,17 +57,17 @@ namespace ioanna.cardGame.Application.Services
                 {
                     await _interactionService.DisplayInvalidCardError(isValidResult.Error);
 
-                    await _interactionService.AskForPlayerCard(game.CurrentPlayer.Hand);
+                    playingCard = await _interactionService.AskForPlayerCard(game.CurrentPlayer.Hand);
+                    
+                    isValidResult = game.CanPlayCard(game.CurrentPlayer.Id, playingCard);
                 }
                 
                 game.PlayCard(game.CurrentPlayer.Id, playingCard);
             }
 
-            var winner = GetGameWinnerTeam(game);
-          
-            var winnerScore = CalculateTeamTrickScores(game, winner);
-            
-            await _interactionService.DisplayFinishedGameInfo(winner, winnerScore);
+            var scores = GetGameScores(game);
+
+            await _interactionService.DisplayFinishedGameInfo(scores);
 
         }
 
@@ -82,32 +82,17 @@ namespace ioanna.cardGame.Application.Services
             game.SetMasterCardPip(masterCardPip);
         }
 
-        private int GetGameWinnerTeam(Game game)
+        private List<(int, int)> GetGameScores(Game game)
         {
             // Retrieve the game from the repository
             if (!game.IsFinished)
             {
                 throw new InvalidOperationException("The game is not yet finished.");
             }
-            
-            return CalculateTeamTrickScores(game, 0) > CalculateTeamTrickScores(game,1) 
-                ? 0 : 1;
+
+            return _scoreService.CalculateTeamsScores(game);
         }
 
 
-        private int CalculateTeamTrickScores(Game game, int teamId)
-        {
-
-            var teamPlayers = game.Players.Where(p => p.TeamId == teamId);
-            return teamPlayers.Sum(p =>
-            {
-                var teamTricks = game.PlayedTricks
-                    .Where(t => t.TrickWinner == p)
-                    .SelectMany(t => t.Cards)
-                    .ToList();
-                
-               return _scoreService.CalculateTrickCardsScore(teamTricks, game.MasterCardPip);
-            });
-        }
     }
 }

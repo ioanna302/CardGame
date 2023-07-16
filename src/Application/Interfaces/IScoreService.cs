@@ -1,6 +1,9 @@
+using ioanna.cardGame.Domain.Entities;
+
 namespace ioanna.cardGame.Application.Interfaces;
 
-public class IScoreService
+public interface IScoreService
 {
-    
+    public List<(int, int)> CalculateTeamsScores(Game game);
+
 }
