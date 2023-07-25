@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace ioanna.cardGame.Domain.Enums;
 
-public enum PipValue
+public enum Rank
 {
     Unknown = 0,
     

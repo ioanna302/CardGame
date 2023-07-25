@@ -6,20 +6,20 @@ namespace ioanna.cardGame.Domain.Entities
     public class Hand
     {
         public int HandId { get; set; }
-        public List<Card> Cards { get;  set; }
+        public List<GameCard> Cards { get;  set; }
 
         public Hand()
         {
-            Cards = new List<Card>();
+            Cards = new List<GameCard>();
         }
 
-        public void AddCards(IEnumerable<Card> cards)
+        public void AddCards(IEnumerable<GameCard> cards)
         {
             Cards.AddRange(cards);
             SortHand();
         }
 
-        public void RemoveCard(Card card)
+        public void RemoveCard(GameCard card)
         {
             Cards.Remove(card);
         }
@@ -31,13 +31,11 @@ namespace ioanna.cardGame.Domain.Entities
             return result;
         }
 
-        public void SortHand()
+        private void SortHand()
         {
-            Cards = Cards.OrderBy(c => c.Pip)
-                .ThenBy(c => c.PipValue)
+            Cards = Cards.OrderBy(c => c.Suit)
+                .ThenByDescending(c => c.Rank)
                 .ToList();
         }
-
-        // Add any additional methods or properties as needed for your game
     }
 }

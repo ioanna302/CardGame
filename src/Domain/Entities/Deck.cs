@@ -26,21 +26,21 @@ public class Deck
     {
         Cards = new[]
         {
-            new Card(Pip.Spades, PipValue.Seven), new Card(Pip.Spades, PipValue.Eight),
-            new Card(Pip.Spades, PipValue.Nine), new Card(Pip.Spades, PipValue.Ten),
-            new Card(Pip.Spades, PipValue.Jack), new Card(Pip.Spades, PipValue.Queen),
-            new Card(Pip.Spades, PipValue.King), new Card(Pip.Spades, PipValue.Ace),
-            new Card(Pip.Clubs, PipValue.Seven), new Card(Pip.Clubs, PipValue.Eight),
-            new Card(Pip.Clubs, PipValue.Nine), new Card(Pip.Clubs, PipValue.Ten), new Card(Pip.Clubs, PipValue.Jack),
-            new Card(Pip.Clubs, PipValue.Queen), new Card(Pip.Clubs, PipValue.King), new Card(Pip.Clubs, PipValue.Ace),
-            new Card(Pip.Diamonds, PipValue.Seven), new Card(Pip.Diamonds, PipValue.Eight),
-            new Card(Pip.Diamonds, PipValue.Nine), new Card(Pip.Diamonds, PipValue.Ten),
-            new Card(Pip.Diamonds, PipValue.Jack), new Card(Pip.Diamonds, PipValue.Queen),
-            new Card(Pip.Diamonds, PipValue.King), new Card(Pip.Diamonds, PipValue.Ace),
-            new Card(Pip.Hearts, PipValue.Seven), new Card(Pip.Hearts, PipValue.Eight),
-            new Card(Pip.Hearts, PipValue.Nine), new Card(Pip.Hearts, PipValue.Ten),
-            new Card(Pip.Hearts, PipValue.Jack), new Card(Pip.Hearts, PipValue.Queen),
-            new Card(Pip.Hearts, PipValue.King), new Card(Pip.Hearts, PipValue.Ace)
+            new Card(Suit.Spades, Rank.Seven), new Card(Suit.Spades, Rank.Eight),
+            new Card(Suit.Spades, Rank.Nine), new Card(Suit.Spades, Rank.Ten),
+            new Card(Suit.Spades, Rank.Jack), new Card(Suit.Spades, Rank.Queen),
+            new Card(Suit.Spades, Rank.King), new Card(Suit.Spades, Rank.Ace),
+            new Card(Suit.Clubs, Rank.Seven), new Card(Suit.Clubs, Rank.Eight),
+            new Card(Suit.Clubs, Rank.Nine), new Card(Suit.Clubs, Rank.Ten), new Card(Suit.Clubs, Rank.Jack),
+            new Card(Suit.Clubs, Rank.Queen), new Card(Suit.Clubs, Rank.King), new Card(Suit.Clubs, Rank.Ace),
+            new Card(Suit.Diamonds, Rank.Seven), new Card(Suit.Diamonds, Rank.Eight),
+            new Card(Suit.Diamonds, Rank.Nine), new Card(Suit.Diamonds, Rank.Ten),
+            new Card(Suit.Diamonds, Rank.Jack), new Card(Suit.Diamonds, Rank.Queen),
+            new Card(Suit.Diamonds, Rank.King), new Card(Suit.Diamonds, Rank.Ace),
+            new Card(Suit.Hearts, Rank.Seven), new Card(Suit.Hearts, Rank.Eight),
+            new Card(Suit.Hearts, Rank.Nine), new Card(Suit.Hearts, Rank.Ten),
+            new Card(Suit.Hearts, Rank.Jack), new Card(Suit.Hearts, Rank.Queen),
+            new Card(Suit.Hearts, Rank.King), new Card(Suit.Hearts, Rank.Ace)
         };
         
         Shuffle();

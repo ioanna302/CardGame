@@ -7,20 +7,20 @@ namespace Console;
 
 public class InteractionService : IInteractionService
 {
-    public Task<Pip> AskForMasterCardPip()
+    public Task<Suit> AskForMasterCardPip()
     {
         System.Console.Clear();
 
-        System.Console.WriteLine($"Provide The Master Card Pip");
+        System.Console.WriteLine($"Provide The Master Card Suit");
 
-        var pipValues = Enum.GetValues<Pip>();
+        var pipValues = Enum.GetValues<Suit>();
     
         foreach (var pipValue in pipValues)
         {
             System.Console.WriteLine($"[{Convert.ToInt32(pipValue)}] {pipValue}");
         }
     
-        return Task.FromResult((Pip)Convert.ToInt32(System.Console.ReadLine()));
+        return Task.FromResult((Suit)Convert.ToInt32(System.Console.ReadLine()));
     }
 
     public Task DisplayCurrentTurnInfo(Game game)
@@ -35,7 +35,7 @@ public class InteractionService : IInteractionService
         return Task.CompletedTask;
     }
 
-    public Task<Card> AskForPlayerCard(Hand hand)
+    public Task<GameCard> AskForPlayerCard(Hand hand)
     {
         System.Console.WriteLine("Enter your action:");
         System.Console.WriteLine(hand.ToString());
@@ -48,7 +48,7 @@ public class InteractionService : IInteractionService
 
     public Task DisplayInvalidCardError(string error)
     {
-        System.Console.WriteLine($"Error while picking your card: {error}");
+        System.Console.WriteLine($"Error while picking your cardBase: {error}");
 
         return Task.CompletedTask;
     }

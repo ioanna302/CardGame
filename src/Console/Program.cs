@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 var services = new ServiceCollection();// Add services to the container.
 services.AddApplicationServices();
 services.AddSingleton<GameFlowService>();
-services.AddTransient<ScoreService>();
 services.AddSingleton<IInteractionService, InteractionService>();
 
 var serviceProvider = services.BuildServiceProvider();

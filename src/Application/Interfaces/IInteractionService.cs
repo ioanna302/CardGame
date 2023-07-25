@@ -6,11 +6,11 @@ namespace ioanna.cardGame.Application.Interfaces;
 
 public interface IInteractionService
 {
-    public Task<Pip> AskForMasterCardPip();
+    public Task<Suit> AskForMasterCardPip();
     
     public Task DisplayCurrentTurnInfo(Game game);
 
-    public Task<Card> AskForPlayerCard(Hand hand);
+    public Task<GameCard> AskForPlayerCard(Hand hand);
 
     public Task DisplayInvalidCardError(string error);
     

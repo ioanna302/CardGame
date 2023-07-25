@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace ioanna.cardGame.Domain.Enums;
 
-public enum Pip
+public enum Suit
 {
     Unknown = 0,
     

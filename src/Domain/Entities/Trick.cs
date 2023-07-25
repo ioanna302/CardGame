@@ -6,33 +6,30 @@ namespace ioanna.cardGame.Domain.Entities
     public class Trick
     {
         public int TrickId { get; set; }
-        public List<TrickCard> Cards { get; private set; }
+        public List<GameCard> Cards { get; private set; }
 
-        public TrickCard HighestMasterPipCard()
+        public GameCard HighestMasterPipCard()
         {
-            var masterCards = Cards.Where(c => c.Pip == MasterPip).ToList();
+            var masterCards = Cards.Where(c => c.Suit == MasterSuit).ToList();
             if (!masterCards.Any())
             {
                 return null;
             }
 
-            var jackCard = masterCards.SingleOrDefault(c => c.PipValue == PipValue.Jack);
-            var nineCard = masterCards.SingleOrDefault(c => c.PipValue == PipValue.Nine);
-
-            return jackCard ?? nineCard ?? masterCards.MaxBy(c => c.PipValue);
+            return masterCards.MaxBy(c => c.Order);
         }
 
-        public Pip ActivePip { get; private set; }
+        public Suit ActiveSuit { get; private set; }
 
-        public Pip MasterPip { get; }
+        public Suit MasterSuit { get; }
         
         public Player TrickWinner { get; private set; }
         
-        public Trick(Pip masterPip)
+        public Trick(Suit masterSuit)
         {
-            MasterPip = masterPip;
+            MasterSuit = masterSuit;
             
-            Cards = new List<TrickCard>();
+            Cards = new List<GameCard>();
         }
 
         public Trick()
@@ -40,14 +37,14 @@ namespace ioanna.cardGame.Domain.Entities
             
         }
 
-        public void AddCard(TrickCard card)
+        public void AddCard(GameCard card)
         {
             Cards.Add(card);
         }
 
-        public void SetActivePip(Pip pip)
+        public void SetActivePip(Suit suit)
         {
-            ActivePip = pip;
+            ActiveSuit = suit;
         }
 
         public void SetTrickWinner(Player player)

@@ -5,24 +5,25 @@ namespace ioanna.cardGame.Domain.ValueObjects;
 public class Card
     
 {
+    public Card()
+    {
+    }
+    
     public int CardId { get; set; }
-    public Card(Pip pip, PipValue pipValue)
+
+    public Suit Suit { get; } 
+
+    public Rank Rank { get; }
+    
+    public Card(Suit suit, Rank rank)
     {
-        Pip = pip;
-        PipValue = pipValue;
+        Suit = suit;
+        Rank = rank;
     }
-
-    protected Card()
-    {
-    }
-
-    public Pip Pip { get; } 
-
-    public PipValue PipValue { get; } 
 
     public override string ToString()
     {
-        return $"{PipValue} of {Pip}";
+        return $"{Rank} of {Suit}";
     }
 }
     
